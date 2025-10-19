@@ -1,0 +1,8 @@
+
+### TRPC Smoke (use with VS Code REST Client or curl)
+
+# GET /api/trpc (should 404 with tRPC meta but proves server is up)
+GET http://localhost:3000/api/trpc
+
+### Example curl that hits a tRPC procedure (your server must support batched format)
+# curl 'http://localhost:3000/api/trpc/ai.ticker?batch=1&input=%7B%7D'

@@ -6,24 +6,44 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "tsx watch server/api/server.ts",
+    "server:prod": "NODE_ENV=production tsx server/api/server.ts",
+    "seed": "tsx server/utils/seed.ts"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "framer-motion": "^11.2.10",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.441.0",
+    "mongoose": "^8.19.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "wouter": "^3.3.4",
-    "framer-motion": "^11.2.10",
-    "lucide-react": "^0.441.0",
-    "clsx": "^2.1.1"
+    "socket.io": "^4.8.1",
+    "wouter": "^3.3.4"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.9.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.2",
     "autoprefixer": "^10.4.19",
+    "nodemon": "^3.1.10",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.13",
+    "tsx": "^4.20.6",
     "typescript": "^5.6.3",
-    "vite": "^5.4.8",
-    "@vitejs/plugin-react": "^4.3.2"
+    "vite": "^5.4.8"
   }
 }

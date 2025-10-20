@@ -1,89 +1,144 @@
-import NavBar from "../components/NavBar";
-import Sidebar from "../components/Sidebar";
-import VideoCard from "../components/VideoCard";
+import React from "react";
+import Brand from "../components/Brand";
 
-const videos = [
-  { id: "1", title: "LDB.AI predicts next major upset: Tanaka vs. Jones", tag: "AI", views: "225K views" },
-  { id: "2", title: "Champion 'El Toro' retains in grueling 12-round war (Analysis)", tag: "News", views: "178K views" },
-  { id: "3", title: "Featherweight Phenomenon: Sofia Morales — Profile", tag: "Fighter", views: "96K views" },
-  { id: "4", title: "The European Invasion: O'Brien & Rossi set for London", tag: "Preview", views: "132K views" },
-  { id: "5", title: "Inside the camp: Davis vs. Benavidez prep week", tag: "Training", views: "89K views" },
-  { id: "6", title: "P4P Shuffle Explained — Why Crawford edges Inoue", tag: "AI", views: "241K views" },
-];
+// --- Optional: tiny placeholder widgets until the real AI widgets are wired ---
+function AITicker() {
+  return (
+    <div className="mx-auto mb-6 w-full max-w-6xl rounded-lg border border-zinc-800/80 bg-zinc-900/40 px-4 py-2 text-sm text-zinc-300">
+      <span className="mr-2 inline-block rounded bg-amber-500/10 px-2 py-0.5 text-amber-400">
+        AI
+      </span>
+      Live ticker: Crawford training camp insights · Inoue P4P ↑ ·
+      Williams–Volkov odds shifting…
+    </div>
+  );
+}
 
 export default function Home2035() {
   return (
-    <div className="min-h-dvh bg-black text-amber-100">
-      <NavBar />
+    <div className="min-h-screen bg-black text-zinc-100">
+      {/* Top bar */}
+      <header className="sticky top-0 z-30 border-b border-zinc-900/70 bg-black/70 backdrop-blur">
+        <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4">
+          <Brand />
+          <nav className="hidden items-center gap-6 md:flex">
+            <a className="text-sm text-zinc-300 hover:text-amber-400" href="/fighters">Fighters</a>
+            <a className="text-sm text-zinc-300 hover:text-amber-400" href="/events">Events</a>
+            <a className="text-sm text-zinc-300 hover:text-amber-400" href="/rankings">Rankings</a>
+            <a className="text-sm text-zinc-300 hover:text-amber-400" href="/community">Community</a>
+          </nav>
+          <a
+            href="/join"
+            className="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-medium text-black hover:bg-amber-400"
+          >
+            Join the League
+          </a>
+        </div>
+      </header>
 
-      <div className="mx-auto flex max-w-7xl gap-6 px-4 pt-4">
-        <Sidebar />
+      {/* AI Ticker */}
+      <main className="mx-auto w-full max-w-7xl px-4">
+        <div className="pt-6">
+          <AITicker />
+        </div>
 
-        <main className="min-w-0 flex-1">
-          {/* Hero Section */}
-          <section className="relative overflow-hidden rounded-2xl border border-amber-300/15 bg-gradient-to-br from-amber-300/10 via-white/5 to-transparent p-6">
-            <div className="relative z-10">
-              <p className="text-xs uppercase tracking-wide text-amber-200/70">Featured</p>
-              <h1 className="mt-1 text-2xl font-extrabold text-amber-100 sm:text-3xl">
-                The People’s League — AI-powered boxing begins here
+        {/* Hero: Next Big Fight + Prediction */}
+        <section className="relative mt-4 overflow-hidden rounded-2xl border border-zinc-900 bg-gradient-to-br from-zinc-950 via-zinc-950 to-zinc-900">
+          {/* subtle “spotlights” */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-24 left-1/3 h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
+            <div className="absolute -bottom-28 right-1/4 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
+          </div>
+
+          <div className="relative grid gap-8 p-6 md:grid-cols-[1.2fr,0.8fr] md:p-10">
+            {/* Left: headline */}
+            <div>
+              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-amber-400">
+                Next Big Fight • AI Preview
+              </p>
+              <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
+                Crawford vs. Spence III
               </h1>
-              <p className="mt-2 max-w-2xl text-sm text-amber-100/75">
-                Predict fights, explore rankings, and watch the sport through intelligent analysis.
-                Your hub for modern boxing.
+              <p className="mt-3 max-w-2xl text-zinc-300">
+                The People’s League brings you 2035-grade, AI-assisted analysis:
+                momentum, styles, sparring telemetry, public sentiment, and live
+                line movement—distilled into score-like probabilities.
               </p>
 
-              <div className="mt-4 flex gap-3">
+              <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a
-                  href="#"
-                  className="rounded-lg bg-amber-500 px-3 py-1.5 text-sm font-semibold text-black hover:bg-amber-400"
+                  href="/predictions/crawford-spence-3"
+                  className="rounded-md bg-amber-500 px-4 py-2 font-medium text-black hover:bg-amber-400"
                 >
-                  Watch Highlights
+                  View Prediction
                 </a>
                 <a
-                  href="#"
-                  className="rounded-lg border border-amber-300/30 px-3 py-1.5 text-sm text-amber-100/90 hover:bg-white/5"
+                  href="/events"
+                  className="rounded-md border border-zinc-700 px-4 py-2 font-medium text-zinc-200 hover:border-zinc-500"
                 >
-                  Try LDB.AI
+                  Get Tickets
                 </a>
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-0 opacity-30">
-              <img className="h-full w-full object-cover" src="/ring-smoke.jpg" alt="" />
-            </div>
-          </section>
+            {/* Right: compact odds card */}
+            <aside className="rounded-xl border border-zinc-800 bg-black/40 p-5">
+              <h3 className="mb-4 text-sm font-semibold text-zinc-300">AI Edge (Live)</h3>
+              <div className="grid grid-cols-2 gap-3 text-center">
+                <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+                  <p className="text-xs text-zinc-400">Crawford</p>
+                  <p className="mt-1 text-2xl font-bold text-amber-400">58%</p>
+                  <p className="mt-1 text-[11px] text-zinc-400">KO/TKO 22%</p>
+                </div>
+                <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+                  <p className="text-xs text-zinc-400">Spence Jr</p>
+                  <p className="mt-1 text-2xl font-bold text-zinc-200">42%</p>
+                  <p className="mt-1 text-[11px] text-zinc-400">Decision 31%</p>
+                </div>
+              </div>
+              <p className="mt-3 text-[11px] text-zinc-500">
+                * Prototype preview. Numbers are illustrative until your data
+                pipeline is connected.
+              </p>
+            </aside>
+          </div>
+        </section>
 
-          {/* Trending Video Grid */}
-          <section className="mt-6">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-amber-100">Trending Today</h2>
-              <a href="#" className="text-xs text-amber-300 hover:underline">
-                View all →
-              </a>
-            </div>
+        {/* Media rail (YouTube-style cards) */}
+        <section className="mt-10">
+          <div className="mb-4 flex items-end justify-between">
+            <h2 className="text-lg font-semibold">LDB.AI Media Feed</h2>
+            <a href="/media" className="text-sm text-zinc-400 hover:text-amber-400">View all</a>
+          </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {videos.map((v) => (
-                <VideoCard key={v.id} v={v} />
-              ))}
-            </div>
-          </section>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <article
+                key={i}
+                className="group overflow-hidden rounded-xl border border-zinc-900 bg-zinc-950"
+              >
+                <div className="aspect-video w-full bg-gradient-to-tr from-zinc-900 to-zinc-800" />
+                <div className="p-4">
+                  <p className="mb-1 line-clamp-2 font-medium group-hover:text-amber-400">
+                    {i % 2 === 0
+                      ? "LDB.AI predicts next major upset"
+                      : "Champion “El Toro” retains in 12-round war"}
+                  </p>
+                  <p className="text-sm text-zinc-400">NEWS • 7 min read</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-          {/* AI Insights (Static for now) */}
-          <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4">
-            <h3 className="text-sm font-semibold text-amber-100">Live AI Insights</h3>
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-100/80">
-              <li>Upset alert index updated (↑ 2.1%) — late money moving on the underdog.</li>
-              <li>Power-punch exchange rate favors Davis in rounds 8–10 (model v0.9).</li>
-              <li>Southpaw vs orthodox trendline leans 56/44 over last 12 months.</li>
-            </ul>
-          </section>
-        </main>
-      </div>
-
-      <footer className="mx-auto mt-10 max-w-7xl px-4 py-8 text-xs text-amber-100/50">
-        © {new Date().getFullYear()} Liga de Boxeo — The People’s League
-      </footer>
+        {/* Footer */}
+        <footer className="mt-16 border-t border-zinc-900 py-8 text-sm text-zinc-400">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 md:flex-row md:items-center md:justify-between">
+            <Brand withText={false} size={32} />
+            <p>© {new Date().getFullYear()} Liga de Boxeo — The People’s League</p>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }

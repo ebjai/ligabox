@@ -1,19 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],   // IMPORTANT: include /src
   theme: {
     extend: {
       colors: {
-        lbx: {
-          bg: "#000000",
-        },
+        lbx: { bg: "#000000" },              // optional
       },
       backgroundImage: {
-        // fallback names (avoid relying only on arbitrary values)
+        // <-- These power bg-lbx-radial-top / center
         "lbx-radial-top":
           "radial-gradient(ellipse at top, rgba(245,158,11,0.20), rgba(127,29,29,0.10) 40%, transparent 70%)",
         "lbx-radial-center":

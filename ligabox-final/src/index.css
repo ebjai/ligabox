@@ -6,8 +6,9 @@
 :root { color-scheme: dark; }
 html, body, #root { height: 100%; }
 body {
-  margin: 0;
+ margin: 0;
   background-color: #000;
   color: #f1d6a5;
   font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased; /* smoother text rendering */
 }

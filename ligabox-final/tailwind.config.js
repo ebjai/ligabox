@@ -1,12 +1,25 @@
-
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
-      colors: { brand: { gold: "#D4A574", red: "#7A1F1F", cream: "#F3E8D8", black: "#0F0F0F" } },
-      boxShadow: { glow: "0 0 0 1px rgba(212,165,116,0.4), 0 0 20px rgba(212,165,116,0.15)" }
-    }
+      colors: {
+        lbx: {
+          bg: "#000000",
+        },
+      },
+      backgroundImage: {
+        // fallback names (avoid relying only on arbitrary values)
+        "lbx-radial-top":
+          "radial-gradient(ellipse at top, rgba(245,158,11,0.20), rgba(127,29,29,0.10) 40%, transparent 70%)",
+        "lbx-radial-center":
+          "radial-gradient(ellipse at center, rgba(244,63,94,0.07), transparent 60%)",
+      },
+    },
   },
-  plugins: []
-}
+  plugins: [],
+};

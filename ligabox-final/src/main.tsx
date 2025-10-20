@@ -1,10 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";               // Tailwind directives
-import Home2035 from "./pages/Home2035";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const el = document.getElementById("root")!;
+createRoot(el).render(
   <React.StrictMode>
-    <Home2035 />
+    <App />
   </React.StrictMode>
 );

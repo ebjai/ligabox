@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "server": "tsx watch server/api/server.ts",
     "server:prod": "NODE_ENV=production tsx server/api/server.ts",
-    "seed": "tsx server/utils/seed.ts"
+    "seed": "tsx server/utils/seed.ts",
+    "validate": "tsx scripts/validate-api.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

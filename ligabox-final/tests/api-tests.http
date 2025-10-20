@@ -1,0 +1,125 @@
+# Liga de Boxeo API Tests
+# Use with VS Code REST Client extension or similar tools
+# Base URL: http://localhost:3000/api/v1
+
+### Health Check
+GET http://localhost:3000/api/health
+
+###
+
+### 1. Authentication - Login
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@ligadeboxeo.com",
+  "password": "admin123"
+}
+
+###
+
+### 2. Get All Fighters
+GET http://localhost:3000/api/v1/fighters?limit=5&page=1
+
+###
+
+### 3. Get Fighters with Photos
+GET http://localhost:3000/api/v1/fighters/with-photos?limit=20
+
+###
+
+### 4. Get Single Fighter by Slug
+GET http://localhost:3000/api/v1/fighters/juan-gonzalez
+
+###
+
+### 5. Get Fighters by Weight Class
+GET http://localhost:3000/api/v1/fighters?weightClass=heavyweight&status=active
+
+###
+
+### 6. Get All Events
+GET http://localhost:3000/api/v1/events?status=upcoming
+
+###
+
+### 7. Get Single Event by Slug
+GET http://localhost:3000/api/v1/events/championship-night-2025
+
+###
+
+### 8. Get Single Fight
+GET http://localhost:3000/api/v1/fights/507f1f77bcf86cd799439011
+
+###
+
+### 9. Update Fight Result (Requires Auth)
+# First login and get token, then use it in Authorization header
+POST http://localhost:3000/api/v1/admin/fights/507f1f77bcf86cd799439011/result
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "winnerId": "507f1f77bcf86cd799439012",
+  "method": "KO",
+  "finalRound": 3
+}
+
+###
+
+### 10. Get All Rankings
+GET http://localhost:3000/api/v1/rankings
+
+###
+
+### 11. Get Weight Class Rankings
+GET http://localhost:3000/api/v1/rankings/heavyweight
+
+###
+
+### 12. Get All Articles
+GET http://localhost:3000/api/v1/articles?status=published&limit=10
+
+###
+
+### 13. Get Single Article by Slug
+GET http://localhost:3000/api/v1/articles/juan-gonzalez-retains-heavyweight-title
+
+###
+
+### 14. Logout
+POST http://localhost:3000/api/v1/auth/logout
+
+###
+
+### 15. Test Rate Limiting (Send multiple requests quickly)
+GET http://localhost:3000/api/v1/fighters
+
+###
+
+### 16. Test Error - Not Found
+GET http://localhost:3000/api/v1/fighters/non-existent-fighter
+
+###
+
+### 17. Test Error - Unauthorized (without token)
+POST http://localhost:3000/api/v1/admin/fights/507f1f77bcf86cd799439011/result
+Content-Type: application/json
+
+{
+  "winnerId": "507f1f77bcf86cd799439012",
+  "method": "KO",
+  "finalRound": 3
+}
+
+###
+
+### 18. Test Bad Request
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@ligadeboxeo.com"
+}
+
+###

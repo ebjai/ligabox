@@ -1,27 +1,22 @@
-import React from "react";
-
-// If the logo ever moves, change only this path:
-import logo from "../../public/ldblogotransparent.png";
-
+// src/components/Brand.tsx
 export default function Brand({
-  size = 44,
-  withText = true,
-}: { size?: number; withText?: boolean }) {
+  size = 36,
+  className = "",
+}: { size?: number; className?: string }) {
   return (
-    <a href="/" className="inline-flex items-center gap-3">
+    <div className={`inline-flex items-center gap-3 ${className}`}>
+      {/* Logo from /public */}
       <img
-        src={logo}
-        alt="Liga de Boxeo"
+        src="/ldblogotransparent.png"
         width={size}
         height={size}
-        className="select-none"
-        draggable={false}
+        alt="Liga de Boxeo"
+        className="block"
+        style={{ filter: "drop-shadow(0 0 0 rgba(0,0,0,0))" }}
       />
-      {withText && (
-        <span className="text-xl font-semibold tracking-wide text-zinc-100">
-          LIGA <span className="text-amber-400">DE</span> BOXEO
-        </span>
-      )}
-    </a>
+      <span className="text-[22px] md:text-[24px] font-extrabold tracking-wide text-[#f1d6a5]">
+        LIGA DE BOXEO
+      </span>
+    </div>
   );
 }
